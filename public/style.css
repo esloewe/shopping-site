@@ -1,0 +1,11 @@
+body {
+    margin: 0;
+    background-color: red;
+}
+
+/* navigation  ----------------------------------------------------------- */
+
+.menu-container {
+    display: grid;
+    grid-template-columns: 100px 1fr 300px;
+}
