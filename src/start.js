@@ -12,10 +12,12 @@ const store = createStore(
     composeWithDevTools(applyMiddleware(reduxPromise))
 );
 
-<Provider store={store}>
-    <App />
-</Provider>;
+let elem = (
+    <Provider store={store}>
+        <App />
+    </Provider>
+);
 
-ReactDOM.render(<App />, document.querySelector("main"));
+ReactDOM.render(elem, document.querySelector("main"));
 
 export { store };

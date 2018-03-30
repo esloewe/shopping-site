@@ -40,6 +40,7 @@ if (process.env.NODE_ENV != "production") {
 
 app.get("/product-list", (req, res) => {
     productData().then(results => {
+        console.log("results in server", results);
         res.json({
             productList: results
         });
