@@ -38,6 +38,14 @@ if (process.env.NODE_ENV != "production") {
 
 // get requests ----------------------------------------------------------------//
 
+app.get("/product-list", (req, res) => {
+    productData().then(results => {
+        res.json({
+            productList: results
+        });
+    });
+});
+
 // post requests ---------------------------------------------------------------//
 
 app.get("*", function(req, res) {

@@ -1,0 +1,10 @@
+import axios from "./axios";
+
+export function productList() {
+    return axios.get("/product-list").then(resp => {
+        return {
+            type: "PRODUCT_LIST",
+            productList: resp.data.productList
+        };
+    });
+}

@@ -1,16 +1,23 @@
 import React from "react";
 import { Link, BrowserRouter, Route } from "react-router-dom";
 import Header from "./header";
+import ProductList from "./productList";
 
 export default class App extends React.Component {
+    constructor() {
+        super();
+        this.state = {};
+    }
+
     render() {
         return (
-            <div>
-                <BrowserRouter>
+            <BrowserRouter>
+                <div>
                     <Header />
-                </BrowserRouter>
-                <p>Testing component</p>
-            </div>
+                    <Route path="/products" component={ProductList} />
+                    <p>Testing component</p>
+                </div>
+            </BrowserRouter>
         );
     }
 }

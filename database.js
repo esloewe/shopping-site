@@ -9,7 +9,7 @@ exports.productData = function() {
     return db
         .query(
             `SELECT *
-                FROM products RETURNING sku
+                FROM products
             `
         )
         .then(results => {
