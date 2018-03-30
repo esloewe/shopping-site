@@ -3,27 +3,32 @@ import axios from "./axios";
 import { createStore, applyMiddleware } from "redux";
 import reduxPromise from "redux-promise";
 import { connect } from "react-redux";
+import { productList } from "./actions";
 
 class ProductList extends React.Component {
     constructor() {
         super();
         this.state = {};
+    }
 
-        this.renderProductList = this.renderProductList.bind(this);
+    componentDidMount() {
+        this.props.dispatch(productList());
     }
 
     renderProductList() {
         if (!this.props.productList) {
             return null;
         }
-
         return this.props.productList.map(product => {
-            console.log("product in compo", product);
             return (
                 <div key={product.id}>
-                    <div>{product.product_name}</div>
-
-                    <img id="product-image-list" src={product.product_image} />
+                    <div className="product-list-item">
+                        <img
+                            id="product-image-list"
+                            src={product.product_image}
+                        />
+                        <h3>{product.product_name}</h3>
+                    </div>
                 </div>
             );
         });
@@ -32,8 +37,9 @@ class ProductList extends React.Component {
     render() {
         return (
             <div>
-                <p>new test here product list component</p>
-                <div>{this.renderProductList()}</div>
+                <div className="product-list-container">
+                    {this.renderProductList()}
+                </div>
             </div>
         );
     }

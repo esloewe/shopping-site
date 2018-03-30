@@ -15,7 +15,6 @@ export default class App extends React.Component {
                 <div>
                     <Header />
                     <Route path="/products" component={ProductList} />
-                    <p>Testing component</p>
                 </div>
             </BrowserRouter>
         );
