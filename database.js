@@ -20,3 +20,19 @@ exports.productData = function() {
             console.log(error);
         });
 };
+
+exports.getProductBySku = function(sku) {
+    return db
+        .query(
+            `SELECT * 
+            FROM products 
+            WHERE sku = $1`,
+            [sku]
+        )
+        .then(results => {
+            return results.rows[0];
+        })
+        .catch(error => {
+            console.log(error);
+        });
+};

@@ -6,7 +6,7 @@ const cookieParser = require("cookie-parser");
 const cookieSession = require("cookie-session");
 const { hashPassword, checkPassword } = require("./hashPass");
 const csrf = require("csurf");
-const { productData } = require("./database");
+const { productData, getProductBySku } = require("./database");
 
 // middleware ----------------------------------------------------------------//
 app.use(express.static("./public"));
@@ -40,9 +40,17 @@ if (process.env.NODE_ENV != "production") {
 
 app.get("/product-list", (req, res) => {
     productData().then(results => {
-        console.log("results in server", results);
         res.json({
             productList: results
+        });
+    });
+});
+
+app.get("/product-list/:sku", (req, res) => {
+    const sku = req.params.sku;
+    getProductBySku(sku).then(results => {
+        res.json({
+            productInfo: results
         });
     });
 });

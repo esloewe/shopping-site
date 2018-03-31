@@ -3,16 +3,23 @@ import axios from "./axios";
 import { createStore, applyMiddleware } from "redux";
 import reduxPromise from "redux-promise";
 import { connect } from "react-redux";
-import { productList } from "./actions";
+import { ProductModal } from "./productModal";
+import { productList, product } from "./actions";
 
 class ProductList extends React.Component {
     constructor() {
         super();
         this.state = {};
+
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount() {
         this.props.dispatch(productList());
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
     }
 
     renderProductList() {
@@ -27,7 +34,9 @@ class ProductList extends React.Component {
                             id="product-image-list"
                             src={product.product_image}
                         />
-                        <h3>{product.product_name}</h3>
+                        <h3 onClick={this.handleSubmit}>
+                            {product.product_name} {ProductModal}
+                        </h3>
                     </div>
                 </div>
             );
