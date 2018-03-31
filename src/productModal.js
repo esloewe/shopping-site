@@ -6,16 +6,18 @@ import { product } from "./actions";
 export class ProductModal extends React.Component {
     constructor() {
         super();
-        this.state = {};
+        this.state = {
+            productName: ""
+        };
         this.renderProduct = this.renderProduct.bind(this);
     }
 
     renderProduct() {
-        this.props.dispatch(product());
+        this.props.renderProduct(resp.data.product);
     }
 
     render() {
-        return <div>test {this.renderProduct()}</div>;
+        return <div>test</div>;
     }
 }
 

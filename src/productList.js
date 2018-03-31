@@ -3,12 +3,11 @@ import axios from "./axios";
 import { createStore, applyMiddleware } from "redux";
 import reduxPromise from "redux-promise";
 import { connect } from "react-redux";
-import { ProductModal } from "./productModal";
 import { productList, product } from "./actions";
 
 class ProductList extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {};
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,6 +19,7 @@ class ProductList extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        this.props.renderProduct();
     }
 
     renderProductList() {
@@ -35,7 +35,7 @@ class ProductList extends React.Component {
                             src={product.product_image}
                         />
                         <h3 onClick={this.handleSubmit}>
-                            {product.product_name} {ProductModal}
+                            {product.product_name}
                         </h3>
                     </div>
                 </div>

@@ -2,6 +2,7 @@ import React from "react";
 import { Link, BrowserRouter, Route } from "react-router-dom";
 import Header from "./header";
 import ProductList from "./productList";
+import ProductModal from "./productModal";
 
 export default class App extends React.Component {
     constructor() {
@@ -15,6 +16,11 @@ export default class App extends React.Component {
                 <div>
                     <Header />
                     <Route exact path="/products" component={ProductList} />
+                    <Route
+                        exact
+                        path="/product/:sku"
+                        component={ProductModal}
+                    />
                 </div>
             </BrowserRouter>
         );
