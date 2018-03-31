@@ -6,36 +6,28 @@ import { connect } from "react-redux";
 import { productList, product } from "./actions";
 
 class ProductList extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {};
 
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.renderProductList = this.renderProductList.bind(this);
     }
 
     componentDidMount() {
         this.props.dispatch(productList());
     }
 
-    handleSubmit(e) {
-        e.preventDefault();
-        this.props.renderProduct();
-    }
-
     renderProductList() {
         if (!this.props.productList) {
             return null;
         }
-        return this.props.productList.map(product => {
+        return this.props.productList.map(prod => {
             return (
-                <div key={product.id}>
+                <div key={prod.id}>
                     <div className="product-list-item">
-                        <img
-                            id="product-image-list"
-                            src={product.product_image}
-                        />
-                        <h3 onClick={this.handleSubmit}>
-                            {product.product_name}
+                        <img id="product-image-list" src={prod.product_image} />
+                        <h3 onClick={() => this.props.dispatch(product(prod))}>
+                            {prod.product_name}
                         </h3>
                     </div>
                 </div>
@@ -55,9 +47,11 @@ class ProductList extends React.Component {
 }
 
 function mapStateToProps(state) {
-    console.log("in map state to props", state.productList);
+    console.log("in map state to props", state.productList, state.product);
     return {
-        productList: state.productList
+        productList: state.productList,
+        product: state.product
     };
 }
 export default connect(mapStateToProps)(ProductList);
+// <!--<div>{this.props.product && <ProductModal />}</div>//-->

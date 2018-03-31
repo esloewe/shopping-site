@@ -13,7 +13,7 @@ export function product() {
     return axios
         .get(`/product-list/${this.props.match.params.sku}`)
         .then(resp => {
-            console.log("resp in modal ");
+            console.log("resp in modal", resp);
             return {
                 type: "PRODUCT",
                 product: resp.data.productInfo
