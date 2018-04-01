@@ -16,6 +16,7 @@ export default class App extends React.Component {
                 <div>
                     <Header />
                     <Route exact path="/products" component={ProductList} />
+                    <Route path="/product" component={ProductModal} />
                 </div>
             </BrowserRouter>
         );

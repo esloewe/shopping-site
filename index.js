@@ -46,8 +46,8 @@ app.get("/product-list", (req, res) => {
     });
 });
 
-app.get("/product/", (req, res) => {
-    productData().then(results => {
+app.get("/product/:id", (req, res) => {
+    getProductBySku(req.params.sku).then(results => {
         res.json({
             product: results
         });

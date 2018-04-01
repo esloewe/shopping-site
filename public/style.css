@@ -52,7 +52,7 @@ a {
 .product-list-container {
     display: grid;
     margin: 120px;
-    grid-gap: 20px;
+    grid-gap: 50px;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     justify-items: center;
     padding: 10px;
@@ -60,4 +60,9 @@ a {
 
 .product-list-container h3 {
     font-size: 26px;
+    text-align: center;
+}
+
+#product-image-list {
+    width: 400px;
 }

@@ -6,14 +6,24 @@ export class ProductModal extends React.Component {
     constructor() {
         super();
         this.state = {};
+        this.renderModal = this.renderModal.bind(this);
+    }
+
+    renderModal() {
+        if (!this.props.product) {
+            return null;
+        }
+        return this.props.product.map(singleProd => {
+            return (
+                <div key={singleProd.id}>
+                    <div>{singleProd.product_name}</div>
+                </div>
+            );
+        });
     }
 
     render() {
-        return (
-            <div>
-                <p>{this.props.product}</p>
-            </div>
-        );
+        return <div>{this.renderModal()}</div>;
     }
 }
 

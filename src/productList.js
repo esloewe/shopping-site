@@ -29,23 +29,29 @@ class ProductList extends React.Component {
             return (
                 <div key={prod.id}>
                     <div className="product-list-item">
-                        <img id="product-image-list" src={prod.product_image} />
+                        <Link to="/product">
+                            <img
+                                onClick={() =>
+                                    this.props.dispatch(product(prod))
+                                }
+                                id="product-image-list"
+                                src={prod.product_image_name}
+                            />
+                        </Link>
 
-                        <h3 onClick={() => this.props.dispatch(product(prod))}>
-                            {prod.product_name}
-                        </h3>
+                        <h3 id="product-name-list">{prod.product_name}</h3>
                     </div>
                 </div>
             );
         });
     }
 
-    render(props) {
+    render() {
         return (
             <div>
                 <div className="product-list-container">
                     {this.renderProductList()}
-                    <div>{this.props.product && <ProductModal />}</div>
+                    <div>{this.props.sku && <ProductModal />}</div>
                 </div>
             </div>
         );
@@ -56,7 +62,7 @@ function mapStateToProps(state) {
     console.log("in map state to props", state.product);
     return {
         productList: state.productList,
-        product: state.product
+        product: state.productList
     };
 }
 export default connect(mapStateToProps)(ProductList);
