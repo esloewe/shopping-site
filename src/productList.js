@@ -15,20 +15,10 @@ class ProductList extends React.Component {
         };
 
         this.renderProductList = this.renderProductList.bind(this);
-        this.toggleModal = this.toggleModal.bind(this);
     }
 
     componentDidMount() {
         this.props.dispatch(productList());
-    }
-
-    toggleModal(e) {
-        e.preventDefault();
-        this.setState({ showModal: !this.state.showModal });
-    }
-
-    handleChange(e) {
-        this.props.product = e.target.value;
     }
 
     renderProductList() {
@@ -40,15 +30,10 @@ class ProductList extends React.Component {
                 <div key={prod.id}>
                     <div className="product-list-item">
                         <img id="product-image-list" src={prod.product_image} />
-                        <Link to="/product">
-                            <h3
-                                onClick={() =>
-                                    this.props.dispatch(product(prod.sku))
-                                }
-                            >
-                                {prod.product_name}
-                            </h3>
-                        </Link>
+
+                        <h3 onClick={() => this.props.dispatch(product(prod))}>
+                            {prod.product_name}
+                        </h3>
                     </div>
                 </div>
             );
@@ -68,7 +53,7 @@ class ProductList extends React.Component {
 }
 
 function mapStateToProps(state) {
-    console.log("in map state to props", state.productList, state.product);
+    console.log("in map state to props", state.product);
     return {
         productList: state.productList,
         product: state.product

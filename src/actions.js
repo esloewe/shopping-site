@@ -10,7 +10,7 @@ export function productList() {
 }
 
 export function product() {
-    return axios.get(`/product/`).then(resp => {
+    return axios.get("/product/").then(resp => {
         console.log("resp in modal", resp);
         return {
             type: "PRODUCT",

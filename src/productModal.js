@@ -11,14 +11,14 @@ export class ProductModal extends React.Component {
     render() {
         return (
             <div>
-                <p>{this.props.product_name}</p>
+                <p>{this.props.product}</p>
             </div>
         );
     }
 }
 
 function mapStateToProps(state) {
-    console.log("in map state to props", state.product);
+    console.log("in map state to props product modal", state.product);
     return {
         product: state.product
     };

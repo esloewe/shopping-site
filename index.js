@@ -40,16 +40,14 @@ if (process.env.NODE_ENV != "production") {
 
 app.get("/product-list", (req, res) => {
     productData().then(results => {
-        console.log("req body", req.body.sku);
         res.json({
             productList: results
         });
-        console.log("req body", req.body.sku);
     });
 });
 
 app.get("/product/", (req, res) => {
-    getProductBySku(req.body.sku).then(results => {
+    productData().then(results => {
         res.json({
             product: results
         });
