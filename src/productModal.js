@@ -9,6 +9,18 @@ export class ProductModal extends React.Component {
     }
 
     render() {
-        return <div>test</div>;
+        return (
+            <div>
+                <p>{this.props.product_name}</p>
+            </div>
+        );
     }
 }
+
+function mapStateToProps(state) {
+    console.log("in map state to props", state.product);
+    return {
+        product: state.product
+    };
+}
+export default connect(mapStateToProps)(ProductModal);

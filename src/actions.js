@@ -10,13 +10,11 @@ export function productList() {
 }
 
 export function product() {
-    return axios
-        .get(`/product-list/${this.props.match.params.sku}`)
-        .then(resp => {
-            console.log("resp in modal", resp);
-            return {
-                type: "PRODUCT",
-                product: resp.data.productInfo
-            };
-        });
+    return axios.get(`/product/`).then(resp => {
+        console.log("resp in modal", resp);
+        return {
+            type: "PRODUCT",
+            product: resp.data.product
+        };
+    });
 }

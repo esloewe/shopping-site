@@ -13,7 +13,6 @@ exports.productData = function() {
             `
         )
         .then(results => {
-            console.log("results in db", results);
             return results.rows;
         })
         .catch(error => {
@@ -24,8 +23,8 @@ exports.productData = function() {
 exports.getProductBySku = function(sku) {
     return db
         .query(
-            `SELECT * 
-            FROM products 
+            `SELECT *
+            FROM products
             WHERE sku = $1`,
             [sku]
         )

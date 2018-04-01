@@ -40,17 +40,18 @@ if (process.env.NODE_ENV != "production") {
 
 app.get("/product-list", (req, res) => {
     productData().then(results => {
+        console.log("req body", req.body.sku);
         res.json({
             productList: results
         });
+        console.log("req body", req.body.sku);
     });
 });
 
-app.get("/product-list/:sku", (req, res) => {
-    const sku = req.params.sku;
-    getProductBySku(sku).then(results => {
+app.get("/product/", (req, res) => {
+    getProductBySku(req.body.sku).then(results => {
         res.json({
-            productInfo: results
+            product: results
         });
     });
 });
