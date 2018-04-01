@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "./axios";
 import { connect } from "react-redux";
+import { product } from "./actions";
 
 export class ProductModal extends React.Component {
     constructor() {
@@ -13,17 +14,19 @@ export class ProductModal extends React.Component {
         if (!this.props.product) {
             return null;
         }
-        return this.props.product.map(singleProd => {
-            return (
-                <div key={singleProd.id}>
-                    <div>{singleProd.product_name}</div>
-                </div>
-            );
-        });
+        return (
+            <div>
+                <div>{this.props.product.product_name}</div>
+            </div>
+        );
     }
 
     render() {
-        return <div>{this.renderModal()}</div>;
+        return (
+            <div>
+                <div>{this.renderModal()}</div>
+            </div>
+        );
     }
 }
 

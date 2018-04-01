@@ -9,6 +9,7 @@ export default function reducer(state = {}, action) {
     }
 
     if (action.type == "PRODUCT") {
+        console.log("state in reducer", action.product);
         return {
             ...state,
             product: action.product

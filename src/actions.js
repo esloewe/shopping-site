@@ -10,8 +10,9 @@ export function productList() {
 }
 
 export function product(sku) {
-    return axios.get("/product/" + sku).then(resp => {
-        console.log("resp in modal", resp);
+    return axios.get(`/product/` + sku.sku).then(resp => {
+        console.log("sku in actios", sku.sku);
+        console.log("resp in modal ", resp);
         return {
             type: "PRODUCT",
             product: resp.data.product

@@ -29,6 +29,7 @@ exports.getProductBySku = function(sku) {
             [sku]
         )
         .then(results => {
+            console.log("results in db", results);
             return results.rows[0];
         })
         .catch(error => {

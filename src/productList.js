@@ -51,7 +51,7 @@ class ProductList extends React.Component {
             <div>
                 <div className="product-list-container">
                     {this.renderProductList()}
-                    <div>{this.props.sku && <ProductModal />}</div>
+                    {this.props.product && <ProductModal />}
                 </div>
             </div>
         );
@@ -60,12 +60,14 @@ class ProductList extends React.Component {
 
 function mapStateToProps(state) {
     console.log("in map state to props", state.product);
+
     return {
         productList: state.productList,
-        product: state.productList
+        product: state.product
     };
 }
 export default connect(mapStateToProps)(ProductList);
 // onClick={() =>
 //     this.props.dispatch(product(prod))
 // }
+//
