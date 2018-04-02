@@ -10,13 +10,34 @@ export class ProductModal extends React.Component {
         this.renderModal = this.renderModal.bind(this);
     }
 
+    handleClick(e) {
+        console.log("clicking");
+        e.preventDefault();
+    }
+
     renderModal() {
         if (!this.props.product) {
             return null;
         }
         return (
-            <div>
-                <div>{this.props.product.product_name}</div>
+            <div className="single-prod-container">
+                <img
+                    className="single-prod-image"
+                    src={this.props.product.product_image_name}
+                />
+                <div className="single-prod-text-info">
+                    <h2 className="single-prod-name">
+                        {this.props.product.product_name}
+                    </h2>
+
+                    <p className="single-prod-description">
+                        {this.props.product.product_description}
+                    </p>
+                    <span className="price"> € {this.props.product.price}</span>
+                    <button onClick={this.handleClick} className="add-to-cart">
+                        add to cart
+                    </button>
+                </div>
             </div>
         );
     }

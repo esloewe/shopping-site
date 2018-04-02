@@ -1,8 +1,9 @@
 import React from "react";
-import { Link, BrowserRouter, Route } from "react-router-dom";
+import { Link, BrowserRouter, Route, Switch } from "react-router-dom";
 import Header from "./header";
 import ProductList from "./productList";
 import ProductModal from "./productModal";
+import Background from "./background";
 
 export default class App extends React.Component {
     constructor() {
@@ -15,7 +16,12 @@ export default class App extends React.Component {
             <BrowserRouter>
                 <div>
                     <Header />
-                    <Route exact path="/products" component={ProductList} />
+                    <Switch>
+                        <Route exact path="/" component={Background} />
+
+                        <Route exact path="/products" component={ProductList} />
+                    </Switch>
+
                     <Route path="/product" component={ProductModal} />
                 </div>
             </BrowserRouter>

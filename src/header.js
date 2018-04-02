@@ -6,6 +6,13 @@ export default class Header extends React.Component {
         super(props);
         this.state = {};
     }
+
+    handleSubmit(e) {
+        console.log("clickin");
+        e.preventDefault;
+    }
+
+    h;
     render() {
         return (
             <div className="menu-container">
@@ -20,7 +27,9 @@ export default class Header extends React.Component {
                 </ul>
                 <div className="menu-icons">
                     <ul className="menu-icons">
-                        <li className="menu-icon">Register</li>
+                        <li onClick={this.handleSubmit} className="menu-icon">
+                            Register
+                        </li>
                         <li className="menu-icon">
                             <i className="material-icons md-36">
                                 person_outline
