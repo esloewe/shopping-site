@@ -57,8 +57,7 @@ function mapStateToProps(state) {
     console.log("in map state to props product modal", state.product);
 
     return {
-        product: state.product,
-        addProductToCart: state.product
+        product: state.product
     };
 }
 export default connect(mapStateToProps)(ProductModal);

@@ -28,9 +28,16 @@ export function addProductToCart(product) {
     //     cart.push(product);
     // }
     // localStorage.setItem("cart", JSON.stringify(cart));
-
     return {
         type: "ADD_PRODUCT_TO_CART",
         product
+    };
+}
+
+export function removeProductFromCart(sku) {
+    console.log("cart item in remove");
+    return {
+        type: "REMOVE_ITEM_FROM_CART",
+        sku
     };
 }

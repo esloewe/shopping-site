@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { addProductToCart } from "./actions";
+import { addProductToCart, removeProductFromCart } from "./actions";
 
 class ShoppingCart extends React.Component {
     constructor() {
@@ -8,27 +8,33 @@ class ShoppingCart extends React.Component {
         this.state = {};
 
         this.renderAddProductToCart = this.renderAddProductToCart.bind(this);
-        this.handleRemoveitem = this.handleRemoveitem.bind(this);
+        this.handleRemoveItem = this.handleRemoveItem.bind(this);
+        this.duplicatesInProductCart = this.duplicatesInProductCart.bind(this);
     }
 
-    componentDidMount() {
-        this.props.dispatch(addProductToCart());
-    }
-
-    handleRemoveitem(e) {
-        e.preventDefault();
+    handleRemoveItem(sku) {
         console.log("clicking");
+        this.props.dispatch(removeProductFromCart(sku));
     }
+
+    // duplicatesInProductCart() {
+    //     const nonDuplicateCart = [];
+    //
+    //     this.props.cart.forEach(function(singleItem) {
+    //         if (nonDuplicateCart.indexOf(singleItem.sku) === -1)
+    //             nonDuplicateCart.push(singleItem.sku);
+    //     });
+    // }
 
     renderAddProductToCart() {
         console.log(
             "logging in render add rpd to cart",
             this.props.addProductToCart
         );
-        if (!this.props.addProductToCart) {
+        if (!this.props.cartItems) {
             return null;
         } else {
-            return this.props.addProductToCart.map((item, i) => {
+            return this.props.cartItems.map((item, i) => {
                 return (
                     item && (
                         <div className="shopping-cart-container" key={i}>
@@ -48,7 +54,9 @@ class ShoppingCart extends React.Component {
                                     max="20"
                                 />
                                 <button
-                                    onClick={this.handleRemoveitem}
+                                    onClick={() =>
+                                        this.handleRemoveItem(item.sku)
+                                    }
                                     className="shopping-cart-button-remove"
                                 >
                                     remove item
@@ -81,7 +89,8 @@ class ShoppingCart extends React.Component {
 function mapStateToProps(state) {
     console.log("state cart in shpiingcart ", state.cart);
     return {
-        addProductToCart: state.cart
+        cartItems: state.cart
+        // uniqueCart: state.cart && state.cart.filter(functi)
     };
 }
 export default connect(mapStateToProps)(ShoppingCart);

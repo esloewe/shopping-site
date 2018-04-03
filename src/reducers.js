@@ -28,6 +28,15 @@ export default function reducer(state = initialState || {}, action) {
         };
     }
 
+    if (action.type == "REMOVE_ITEM_FROM_CART") {
+        state = {
+            ...state,
+            cart: state.cart.filter(item => {
+                return item.sku != action.sku;
+            })
+        };
+    }
+
     localStorage.setItem("state", JSON.stringify(state));
 
     return state;
