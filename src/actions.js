@@ -11,11 +11,26 @@ export function productList() {
 
 export function product(sku) {
     return axios.get(`/product/` + sku.sku).then(resp => {
-        console.log("sku in actios", sku.sku);
-        console.log("resp in modal ", resp);
         return {
             type: "PRODUCT",
             product: resp.data.product
         };
     });
+}
+
+export function addProductToCart(product) {
+    // let cart = localStorage.getItem("cart");
+    // cart = cart && JSON.parse(cart);
+    //
+    // if (!cart) {
+    //     cart = [product];
+    // } else {
+    //     cart.push(product);
+    // }
+    // localStorage.setItem("cart", JSON.stringify(cart));
+
+    return {
+        type: "ADD_PRODUCT_TO_CART",
+        product
+    };
 }

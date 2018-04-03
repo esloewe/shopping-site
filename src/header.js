@@ -17,7 +17,7 @@ export default class Header extends React.Component {
         return (
             <div className="menu-container">
                 <Link className="menu-list" to="/">
-                    <h1 id="title-header">Shop Name</h1>
+                    <h1 id="title-header">byLayer</h1>
                 </Link>
 
                 <ul className="menu-list">
@@ -27,19 +27,25 @@ export default class Header extends React.Component {
                 </ul>
                 <div className="menu-icons">
                     <ul className="menu-icons">
-                        <li onClick={this.handleSubmit} className="menu-icon">
+                        <Link
+                            to="/"
+                            onClick={this.handleSubmit}
+                            className="menu-icon register"
+                        >
                             Register
-                        </li>
+                        </Link>
+
                         <li className="menu-icon">
                             <i className="material-icons md-36">
                                 person_outline
                             </i>
                         </li>
-                        <li className="menu-icon">
-                            <i className="material-icons md-36">
+
+                        <Link to="/shopping-cart" className="menu-icon">
+                            <i className="material-icons shopping-cart md-36">
                                 add_shopping_cart
                             </i>
-                        </li>
+                        </Link>
                     </ul>
                 </div>
             </div>

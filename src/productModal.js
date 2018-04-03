@@ -1,18 +1,20 @@
 import React from "react";
 import axios from "./axios";
 import { connect } from "react-redux";
-import { product } from "./actions";
+import { product, addProductToCart } from "./actions";
 
 export class ProductModal extends React.Component {
     constructor() {
         super();
         this.state = {};
         this.renderModal = this.renderModal.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     handleClick(e) {
         console.log("clicking");
         e.preventDefault();
+        this.props.dispatch(addProductToCart(this.props.product));
     }
 
     renderModal() {
@@ -53,8 +55,10 @@ export class ProductModal extends React.Component {
 
 function mapStateToProps(state) {
     console.log("in map state to props product modal", state.product);
+
     return {
-        product: state.product
+        product: state.product,
+        addProductToCart: state.product
     };
 }
 export default connect(mapStateToProps)(ProductModal);

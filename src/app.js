@@ -4,6 +4,7 @@ import Header from "./header";
 import ProductList from "./productList";
 import ProductModal from "./productModal";
 import Background from "./background";
+import ShoppingCart from "./shoppingCart";
 
 export default class App extends React.Component {
     constructor() {
@@ -23,6 +24,7 @@ export default class App extends React.Component {
                     </Switch>
 
                     <Route path="/product" component={ProductModal} />
+                    <Route path="/shopping-cart" component={ShoppingCart} />
                 </div>
             </BrowserRouter>
         );

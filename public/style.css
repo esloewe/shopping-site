@@ -3,13 +3,13 @@ body {
     font-family: "Roboto", sans-serif;
     background-color: #f7f7f7;
     color: #333;
+    overflow-x: hidden;
 }
 
 /* background ----------------------------------------------*/
 
 .background {
     width: 100%;
-    margin: 0;
 }
 
 /* navigation  ----------------------------------------------------------- */
@@ -24,8 +24,16 @@ body {
 }
 
 #title-header {
-    font-size: 40px;
+    font-family: "Titillium Web", sans-serif;
+    font-size: 68px;
+    letter-spacing: 5px;
+    margin-bottom: -2px;
+    margin-left: 20px;
+    font-weight: lighter;
 }
+
+/* font-family: 'Exo 2', sans-serif;
+font-family: 'Titillium Web', sans-serif; */
 
 ul {
     list-style-type: none;
@@ -42,7 +50,7 @@ a {
     border-bottom: 2px solid black;
 }
 
-.menu-icon:hover {
+.register:hover {
     border-bottom: 2px solid black;
 }
 .menu-item {
@@ -60,6 +68,10 @@ a {
     font-size: 36px;
 }
 
+.shopping-cart:hover {
+    color: rgb(41, 235, 211);
+}
+
 /* product list component ----------------------------------------------*/
 .product-list-container {
     display: grid;
@@ -71,6 +83,7 @@ a {
 }
 
 .product-list-container h3 {
+    font-weight: lighter;
     font-size: 26px;
     text-align: center;
 }
@@ -124,4 +137,55 @@ a {
 
 .add-to-cart:hover {
     color: rgb(41, 235, 211);
+}
+
+/* shopping cart -------------------------------------------*/
+
+/* main container */
+.renderer-container-shopping-cart {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+/* items container */
+.shopping-cart-container {
+    display: grid;
+    margin-left: 60px;
+    grid-template-rows: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+.shopping-cart-item-container {
+    display: grid;
+    margin: 10px;
+    background-color: #fff;
+
+    grid-template-columns: 170px 300px 100px 50px 150px;
+    align-items: center;
+}
+
+.shopping-cart-image {
+    width: 150px;
+}
+
+.shopping-cart-quantity {
+    text-align: center;
+}
+
+.shopping-cart-button-remove {
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+/* total container */
+.header-title-shopping-cart {
+    font-size: 32px;
+    padding: 20px;
+}
+
+.total-shopping-cart {
+    background-color: #fff;
+    display: grid;
+    justify-self: center;
 }
