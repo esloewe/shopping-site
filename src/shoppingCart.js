@@ -9,11 +9,9 @@ class ShoppingCart extends React.Component {
 
         this.renderAddProductToCart = this.renderAddProductToCart.bind(this);
         this.handleRemoveItem = this.handleRemoveItem.bind(this);
-        this.duplicatesInProductCart = this.duplicatesInProductCart.bind(this);
     }
 
     handleRemoveItem(sku) {
-        console.log("clicking");
         this.props.dispatch(removeProductFromCart(sku));
     }
 
@@ -27,10 +25,6 @@ class ShoppingCart extends React.Component {
     // }
 
     renderAddProductToCart() {
-        console.log(
-            "logging in render add rpd to cart",
-            this.props.addProductToCart
-        );
         if (!this.props.cartItems) {
             return null;
         } else {
@@ -68,7 +62,15 @@ class ShoppingCart extends React.Component {
             });
         }
     }
+
     render() {
+        let total = 0;
+        this.props.cartItems.forEach(item => {
+            total = total += item.price - item.price.length + 5;
+        });
+
+        console.log("total", total, typeof total);
+
         return (
             <div className="renderer-container-shopping-cart">
                 <div>{this.renderAddProductToCart()}</div>
@@ -77,9 +79,10 @@ class ShoppingCart extends React.Component {
                         Shopping Cart
                     </h2>
                     <h4>Payment</h4>
-                    <p>sub-total</p>
+                    <p>sub-total: {total}</p>
                     <p>delivery : FREE FOREVER</p>
-                    <h3>total</h3>
+                    <h3>total: {total} </h3>
+                    <div />
                 </div>
             </div>
         );
@@ -88,9 +91,9 @@ class ShoppingCart extends React.Component {
 
 function mapStateToProps(state) {
     console.log("state cart in shpiingcart ", state.cart);
+
     return {
         cartItems: state.cart
-        // uniqueCart: state.cart && state.cart.filter(functi)
     };
 }
 export default connect(mapStateToProps)(ShoppingCart);

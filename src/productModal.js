@@ -6,7 +6,9 @@ import { product, addProductToCart } from "./actions";
 export class ProductModal extends React.Component {
     constructor() {
         super();
-        this.state = {};
+        this.state = {
+            changeTextButton: "add to cart"
+        };
         this.renderModal = this.renderModal.bind(this);
         this.handleClick = this.handleClick.bind(this);
     }
@@ -15,6 +17,7 @@ export class ProductModal extends React.Component {
         console.log("clicking");
         e.preventDefault();
         this.props.dispatch(addProductToCart(this.props.product));
+        this.setState({ changeTextButton: "added to cart" });
     }
 
     renderModal() {
@@ -37,7 +40,7 @@ export class ProductModal extends React.Component {
                     </p>
                     <span className="price"> € {this.props.product.price}</span>
                     <button onClick={this.handleClick} className="add-to-cart">
-                        add to cart
+                        {this.state.changeTextButton}
                     </button>
                 </div>
             </div>
