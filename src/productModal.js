@@ -7,16 +7,23 @@ export class ProductModal extends React.Component {
     constructor() {
         super();
         this.state = {
+            quantity: 1,
             changeTextButton: "add to cart"
         };
         this.renderModal = this.renderModal.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(e) {
+        this.setState({ quantity: e.target.value });
     }
 
     handleClick(e) {
-        console.log("clicking");
         e.preventDefault();
-        this.props.dispatch(addProductToCart(this.props.product));
+        this.props.dispatch(
+            addProductToCart(this.props.product, this.state.quantity)
+        );
         this.setState({ changeTextButton: "added to cart" });
     }
 
@@ -39,6 +46,17 @@ export class ProductModal extends React.Component {
                         {this.props.product.product_description}
                     </p>
                     <span className="price"> € {this.props.product.price}</span>
+                    <span id="qty">Qty:</span>
+                    <input
+                        id="qty-input"
+                        onChange={this.handleChange}
+                        className="shopping-cart-quantity"
+                        type="number"
+                        name="quantity"
+                        value={this.state.quantity}
+                        min="1"
+                        max="20"
+                    />
                     <button onClick={this.handleClick} className="add-to-cart">
                         {this.state.changeTextButton}
                     </button>

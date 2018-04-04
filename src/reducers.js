@@ -22,9 +22,13 @@ export default function reducer(state = initialState || {}, action) {
         if (!cart) {
             cart = [];
         }
+
+        let product = Object.assign({}, action.product, {
+            quantity: action.quantity
+        });
         state = {
             ...state,
-            cart: [...cart, action.product]
+            cart: [...cart, product]
         };
     }
 

@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+
 import { addProductToCart, removeProductFromCart } from "./actions";
 
 class ShoppingCart extends React.Component {
@@ -9,20 +10,22 @@ class ShoppingCart extends React.Component {
 
         this.renderAddProductToCart = this.renderAddProductToCart.bind(this);
         this.handleRemoveItem = this.handleRemoveItem.bind(this);
+        this.checkingForDuplicates = this.checkingForDuplicates.bind(this);
     }
 
     handleRemoveItem(sku) {
         this.props.dispatch(removeProductFromCart(sku));
     }
 
-    // duplicatesInProductCart() {
-    //     const nonDuplicateCart = [];
-    //
-    //     this.props.cart.forEach(function(singleItem) {
-    //         if (nonDuplicateCart.indexOf(singleItem.sku) === -1)
-    //             nonDuplicateCart.push(singleItem.sku);
-    //     });
-    // }
+    checkingForDuplicates() {
+        let hasDuplicates = [];
+
+        for (var i = 0; i < this.props.cartItems.sku.length; i++) {
+            hasDuplicates[i];
+        }
+
+        console.log("hasduplicates check", hasDuplicates, hasDuplicates[i]);
+    }
 
     renderAddProductToCart() {
         if (!this.props.cartItems) {
@@ -39,14 +42,7 @@ class ShoppingCart extends React.Component {
                                 />
                                 <h3>{item.product_name}</h3>
                                 <span> € {item.price}</span>
-                                <input
-                                    className="shopping-cart-quantity"
-                                    placeholder="   1"
-                                    type="number"
-                                    name="quantity"
-                                    min="1"
-                                    max="20"
-                                />
+                                <span> Qty: {item.quantity}</span>
                                 <button
                                     onClick={() =>
                                         this.handleRemoveItem(item.sku)
@@ -66,10 +62,8 @@ class ShoppingCart extends React.Component {
     render() {
         let total = 0;
         this.props.cartItems.forEach(item => {
-            total = total += item.price - item.price.length + 5;
+            total += parseInt(item.price * item.quantity);
         });
-
-        console.log("total", total, typeof total);
 
         return (
             <div className="renderer-container-shopping-cart">
@@ -78,11 +72,12 @@ class ShoppingCart extends React.Component {
                     <h2 className="header-title-shopping-cart">
                         Shopping Cart
                     </h2>
-                    <h4>Payment</h4>
-                    <p>sub-total: {total}</p>
+                    <h3>Payment</h3>
+                    <p>sub-total: € {total}</p>
                     <p>delivery : FREE FOREVER</p>
-                    <h3>total: {total} </h3>
+                    <h3>total: € {total} </h3>
                     <div />
+                    <button>Buy Now</button>
                 </div>
             </div>
         );

@@ -18,19 +18,12 @@ export function product(sku) {
     });
 }
 
-export function addProductToCart(product) {
-    // let cart = localStorage.getItem("cart");
-    // cart = cart && JSON.parse(cart);
-    //
-    // if (!cart) {
-    //     cart = [product];
-    // } else {
-    //     cart.push(product);
-    // }
-    // localStorage.setItem("cart", JSON.stringify(cart));
+export function addProductToCart(product, quantity) {
+    console.log("quantity", quantity);
     return {
         type: "ADD_PRODUCT_TO_CART",
-        product
+        product,
+        quantity
     };
 }
 
