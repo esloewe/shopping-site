@@ -17,19 +17,27 @@ export default function reducer(state = initialState || {}, action) {
     }
 
     if (action.type == "ADD_PRODUCT_TO_CART") {
+        let productCombined = false;
         let cart = state.cart;
 
         if (!cart) {
             cart = [];
         }
+        for (var i = 0; i < cart.length; i++) {
+            if (action.product.sku == cart[i].sku) {
+                let newQuantity = parseInt(cart[i].quantity);
+                newQuantity += parseInt(action.quantity);
+                cart[i].quantity = newQuantity;
+                productCombined = true;
+            }
+        }
 
-        let product = Object.assign({}, action.product, {
-            quantity: action.quantity
-        });
-        state = {
-            ...state,
-            cart: [...cart, product]
-        };
+        if (productCombined) {
+            state = {
+                ...state,
+                cart: [...cart]
+            };
+        }
     }
 
     if (action.type == "REMOVE_ITEM_FROM_CART") {

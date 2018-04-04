@@ -178,7 +178,6 @@ input[type="number"]::-webkit-outer-spin-button {
     display: grid;
     margin: 10px;
     background-color: #fff;
-
     grid-template-columns: 170px 300px 100px 50px 150px;
     align-items: center;
 }
@@ -203,4 +202,14 @@ input[type="number"]::-webkit-outer-spin-button {
     background-color: #fff;
     display: grid;
     justify-self: center;
+}
+
+/* coming soon  */
+.coming-soon-container {
+    display: grid;
+    justify-items: center;
+    margin-top: 250px;
+}
+.coming-soon {
+    font-size: 100px;
 }

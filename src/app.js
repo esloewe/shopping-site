@@ -5,6 +5,7 @@ import ProductList from "./productList";
 import ProductModal from "./productModal";
 import Background from "./background";
 import ShoppingCart from "./shoppingCart";
+import CommingSoon from "./comingSoon";
 
 export default class App extends React.Component {
     constructor() {
@@ -25,6 +26,7 @@ export default class App extends React.Component {
 
                     <Route path="/product" component={ProductModal} />
                     <Route path="/shopping-cart" component={ShoppingCart} />
+                    <Route path="/purchase" component={CommingSoon} />
                 </div>
             </BrowserRouter>
         );

@@ -1,11 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-
+import CommingSoon from "./comingSoon";
+import { Link } from "react-router-dom";
 import { addProductToCart, removeProductFromCart } from "./actions";
 
 class ShoppingCart extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {};
 
         this.renderAddProductToCart = this.renderAddProductToCart.bind(this);
@@ -17,15 +18,7 @@ class ShoppingCart extends React.Component {
         this.props.dispatch(removeProductFromCart(sku));
     }
 
-    checkingForDuplicates() {
-        let hasDuplicates = [];
-
-        for (var i = 0; i < this.props.cartItems.sku.length; i++) {
-            hasDuplicates[i];
-        }
-
-        console.log("hasduplicates check", hasDuplicates, hasDuplicates[i]);
-    }
+    checkingForDuplicates() {}
 
     renderAddProductToCart() {
         if (!this.props.cartItems) {
@@ -77,7 +70,10 @@ class ShoppingCart extends React.Component {
                     <p>delivery : FREE FOREVER</p>
                     <h3>total: € {total} </h3>
                     <div />
-                    <button>Buy Now</button>
+
+                    <Link to="purchase">
+                        <button>Buy Now</button>
+                    </Link>
                 </div>
             </div>
         );
