@@ -18,6 +18,7 @@ export default class App extends React.Component {
             <BrowserRouter>
                 <div>
                     <Header />
+
                     <Switch>
                         <Route exact path="/" component={Background} />
 

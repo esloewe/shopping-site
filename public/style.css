@@ -141,7 +141,6 @@ a {
 #qty {
     font-size: 26px;
     margin-left: 55px;
-
     padding: 15px;
 }
 
@@ -153,7 +152,6 @@ a {
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
     opacity: 3;
-
     height: 3em;
 }
 
@@ -202,12 +200,25 @@ input[type="number"]::-webkit-outer-spin-button {
     background-color: #fff;
     display: grid;
     justify-self: center;
+    width: 300px;
+}
+
+.buy-now-button {
+    font-size: 23px;
+    padding: 11px;
+    margin: 50px;
+    border: 1px solid #f7f7f7;
+    justify-self: start;
+}
+
+.middle-text-payment {
+    margin-left: 40px;
 }
 
 /* coming soon  */
 .coming-soon-container {
     display: grid;
-    justify-items: center;
+    justify-self: center;
     margin-top: 250px;
 }
 .coming-soon {

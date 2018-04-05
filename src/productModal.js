@@ -24,6 +24,8 @@ export class ProductModal extends React.Component {
         this.props.dispatch(
             addProductToCart(this.props.product, this.state.quantity)
         );
+        console.log("stuff", this.props.product, this.state.quantity);
+
         this.setState({ changeTextButton: "added to cart" });
     }
 

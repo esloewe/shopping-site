@@ -65,14 +65,16 @@ class ShoppingCart extends React.Component {
                     <h2 className="header-title-shopping-cart">
                         Shopping Cart
                     </h2>
-                    <h3>Payment</h3>
-                    <p>sub-total: € {total}</p>
-                    <p>delivery : FREE FOREVER</p>
-                    <h3>total: € {total} </h3>
+                    <h3 className="middle-text-payment">Payment</h3>
+                    <p> className="middle-text-payment"sub-total: € {total}</p>
+                    <p className="middle-text-payment">
+                        delivery : FREE FOREVER
+                    </p>
+                    <h3 className="middle-text-payment">total: € {total} </h3>
                     <div />
 
                     <Link to="purchase">
-                        <button>Buy Now</button>
+                        <button className="buy-now-button">Buy Now</button>
                     </Link>
                 </div>
             </div>

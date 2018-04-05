@@ -1,6 +1,8 @@
 import React from "react";
 let initialState = JSON.parse(localStorage.getItem("state"));
 
+console.log("initial state", initialState);
+
 export default function reducer(state = initialState || {}, action) {
     if (action.type == "PRODUCT_LIST") {
         state = {
@@ -19,7 +21,6 @@ export default function reducer(state = initialState || {}, action) {
     if (action.type == "ADD_PRODUCT_TO_CART") {
         let productCombined = false;
         let cart = state.cart;
-
         if (!cart) {
             cart = [];
         }
@@ -31,11 +32,21 @@ export default function reducer(state = initialState || {}, action) {
                 productCombined = true;
             }
         }
+        console.log("checking the cart in reducer", cart, action.product);
 
         if (productCombined) {
             state = {
                 ...state,
                 cart: [...cart]
+            };
+        } else {
+            const newProduct = {
+                ...action.product,
+                quantity: action.quantity
+            };
+            state = {
+                ...state,
+                cart: [...cart, newProduct]
             };
         }
     }
