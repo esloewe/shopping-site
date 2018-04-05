@@ -3,7 +3,7 @@ import { Link, BrowserRouter, Route, Switch } from "react-router-dom";
 import Header from "./header";
 import ProductList from "./productList";
 import ProductModal from "./productModal";
-import Background from "./background";
+import Graphic from "./graphic";
 import ShoppingCart from "./shoppingCart";
 import CommingSoon from "./comingSoon";
 
@@ -20,8 +20,7 @@ export default class App extends React.Component {
                     <Header />
 
                     <Switch>
-                        <Route exact path="/" component={Background} />
-
+                        <Route exact path="/" component={Graphic} />
                         <Route exact path="/products" component={ProductList} />
                     </Switch>
 

@@ -6,10 +6,28 @@ body {
     overflow-x: hidden;
 }
 
-/* background ----------------------------------------------*/
+/* background graphic  ----------------------------------------------*/
 
-.background {
+.graphic {
     width: 100%;
+}
+
+.text-in-graphic {
+    font-size: 56px;
+    position: absolute;
+    width: 750px;
+    top: 35%;
+    left: 50%;
+    text-align: center;
+    z-index: 100;
+    display: block;
+}
+
+#highlighted-text {
+    padding: 5px;
+    font-size: 70px;
+    color: rgb(41, 235, 211);
+    margin: 10px;
 }
 
 /* navigation  ----------------------------------------------------------- */
@@ -44,6 +62,10 @@ a {
     text-decoration: none;
     color: #333;
     font-size: 20px;
+}
+
+.product-header {
+    margin-left: 80px;
 }
 
 .menu-list a:hover {
@@ -134,7 +156,7 @@ a {
     border: 1px solid transparent;
 }
 
-.add-to-cart:hover {
+button:hover {
     color: rgb(41, 235, 211);
 }
 
@@ -168,15 +190,15 @@ input[type="number"]::-webkit-outer-spin-button {
 /* items container */
 .shopping-cart-container {
     display: grid;
-    margin-left: 60px;
-    grid-template-rows: repeat(auto-fill, minmax(150px, 1fr));
+    margin-left: 100px;
+    grid-template-rows: repeat(auto-fill, minmax(200px, 1fr));
 }
 
 .shopping-cart-item-container {
     display: grid;
-    margin: 10px;
+    margin: 20px;
     background-color: #fff;
-    grid-template-columns: 170px 300px 100px 50px 150px;
+    grid-template-columns: 190px 300px 120px 80px 210px;
     align-items: center;
 }
 
@@ -184,10 +206,24 @@ input[type="number"]::-webkit-outer-spin-button {
     width: 150px;
 }
 
+#name-cart-single {
+    font-size: 24px;
+}
+
+#single-cart-price {
+    font-size: 22px;
+}
+
+#single-cart-qty {
+    font-size: 22px;
+}
+
 .shopping-cart-button-remove {
-    font-size: 16px;
+    font-size: 22px;
     width: 150px;
-    margin-left: 100px;
+    margin-left: 20px;
+    border: 2px solid #f7f7f7;
+    padding: 10px;
 }
 
 /* total container */
@@ -196,23 +232,36 @@ input[type="number"]::-webkit-outer-spin-button {
     padding: 20px;
 }
 
+#sub-total {
+    display: grid;
+}
+
 .total-shopping-cart {
     background-color: #fff;
     display: grid;
-    justify-self: center;
-    width: 300px;
+    margin-left: 180px;
+    width: 350px;
 }
 
 .buy-now-button {
     font-size: 23px;
-    padding: 11px;
+    padding: 18px;
     margin: 50px;
-    border: 1px solid #f7f7f7;
+    border: 2px solid #f7f7f7;
     justify-self: start;
 }
 
 .middle-text-payment {
-    margin-left: 40px;
+    font-size: 20px;
+}
+
+.total {
+    border-top: 1px solid #f7f7f7;
+    padding: 10px;
+}
+
+.payment-h3 {
+    font-size: 28px;
 }
 
 /* coming soon  */
@@ -223,4 +272,5 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 .coming-soon {
     font-size: 100px;
+    justify-self: center;
 }

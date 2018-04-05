@@ -21,16 +21,16 @@ export default class Header extends React.Component {
                 </Link>
 
                 <ul className="menu-list">
-                    <Link className="menu-list" to="/products">
+                    <Link className="menu-list product-header" to="/products">
                         Products
                     </Link>
                 </ul>
                 <div className="menu-icons">
-                    <ul className="menu-icons">
+                    <ul className="menu-icons ">
                         <Link
                             to="/"
                             onClick={this.handleSubmit}
-                            className="menu-icon register"
+                            className="menu-icon register-header"
                         >
                             Register
                         </Link>

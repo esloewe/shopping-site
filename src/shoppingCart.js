@@ -33,9 +33,15 @@ class ShoppingCart extends React.Component {
                                     className="shopping-cart-image"
                                     src={item.product_image_name}
                                 />
-                                <h3>{item.product_name}</h3>
-                                <span> € {item.price}</span>
-                                <span> Qty: {item.quantity}</span>
+                                <h3 id="name-cart-single">
+                                    {item.product_name}
+                                </h3>
+                                <span id="single-cart-price">
+                                    € {item.price}
+                                </span>
+                                <span id="single-cart-qty">
+                                    Qty: {item.quantity}
+                                </span>
                                 <button
                                     onClick={() =>
                                         this.handleRemoveItem(item.sku)
@@ -65,16 +71,23 @@ class ShoppingCart extends React.Component {
                     <h2 className="header-title-shopping-cart">
                         Shopping Cart
                     </h2>
-                    <h3 className="middle-text-payment">Payment</h3>
-                    <p> className="middle-text-payment"sub-total: € {total}</p>
+                    <h3 className="middle-text-payment payment-h3">Payment</h3>
+                    <div>
+                        <p className="middle-text-payment">Sub-total </p>
+                        <p>€ {total}</p>
+                    </div>
                     <p className="middle-text-payment">
-                        delivery : FREE FOREVER
+                        Delivery <b>FREE FOREVER</b>
                     </p>
-                    <h3 className="middle-text-payment">total: € {total} </h3>
+                    <h3 className="middle-text-payment total">
+                        <b>Total (VAT included) € {total} </b>
+                    </h3>
                     <div />
 
                     <Link to="purchase">
-                        <button className="buy-now-button">Buy Now</button>
+                        <button className="buy-now-button">
+                            Go to Checkout
+                        </button>
                     </Link>
                 </div>
             </div>
