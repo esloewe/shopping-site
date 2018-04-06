@@ -52,7 +52,7 @@ export class ProductModal extends React.Component {
                     <input
                         id="qty-input"
                         onChange={this.handleChange}
-                        className="shopping-cart-quantity"
+                        className="shopping-cart-quantity ui-spinner-input"
                         type="number"
                         name="quantity"
                         value={this.state.quantity}

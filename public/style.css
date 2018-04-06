@@ -66,12 +66,16 @@ a {
 
 .product-header {
     margin-left: 80px;
+    font-size: 26px;
 }
 
 .menu-list a:hover {
     border-bottom: 2px solid black;
 }
 
+.register {
+    font-size: 24px;
+}
 .register:hover {
     border-bottom: 2px solid black;
 }
@@ -86,6 +90,7 @@ a {
     margin-right: 20px;
     font-size: 18px;
 }
+
 .material-icons.md-36 {
     font-size: 36px;
 }
@@ -111,7 +116,12 @@ a {
 }
 
 #product-image-list {
-    width: 400px;
+    width: 420px;
+    height: auto;
+}
+
+#product-image-list:hover {
+    transform: scale(1.2);
 }
 
 /* single product page component ----------------------------------------------  */
@@ -124,7 +134,7 @@ a {
     padding: 100px;
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 1000px) {
     .single-prod-container {
         display: grid;
         grid-template-columns: 1fr;
@@ -137,6 +147,7 @@ a {
     width: 600px;
     justify-self: start;
 }
+
 .single-prod-name {
     font-size: 42px;
 }
@@ -171,6 +182,11 @@ button:hover {
     width: 50px;
 }
 
+.ui-spinner-input {
+    width: 50px;
+    /* Enter your own width above */
+}
+
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
     opacity: 3;
@@ -187,6 +203,29 @@ input[type="number"]::-webkit-outer-spin-button {
     margin-top: 100px;
 }
 
+@media screen and (max-width: 950px) {
+    .renderer-container-shopping-cart {
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .shopping-cart-container {
+        margin-top: 50px;
+        margin-left: 200px;
+    }
+
+    .shopping-cart-item-container {
+        display: grid;
+        margin: 20px;
+        background-color: #fff;
+        grid-template-columns: 200px 300px;
+        grid-template-rows: 100px 100px;
+        align-items: center;
+    }
+}
+
 /* items container */
 .shopping-cart-container {
     display: grid;
@@ -198,12 +237,17 @@ input[type="number"]::-webkit-outer-spin-button {
     display: grid;
     margin: 20px;
     background-color: #fff;
-    grid-template-columns: 190px 300px 120px 80px 210px;
+    grid-template-columns: 190px 350px 120px 80px 210px;
     align-items: center;
 }
 
 .shopping-cart-image {
     width: 150px;
+}
+.image-container-cart,
+.name-container-cart {
+    margin-left: 30px;
+    margin-right: 30px;
 }
 
 #name-cart-single {
@@ -224,47 +268,79 @@ input[type="number"]::-webkit-outer-spin-button {
     margin-left: 20px;
     border: 2px solid #f7f7f7;
     padding: 10px;
+    cursor: pointer;
 }
 
 /* total container */
 .header-title-shopping-cart {
-    font-size: 32px;
-    padding: 20px;
+    font-size: 36px;
+    padding: 30px;
+    text-align: center;
 }
 
-#sub-total {
+.sub-total {
     display: grid;
+    grid-template-columns: 180px 120px;
+    grid-template-rows: 30px;
+    align-items: end;
+    width: 400px;
+    margin-bottom: 30px;
+    margin-left: 70px;
 }
 
-.total-shopping-cart {
+.final-total {
+    display: grid;
+    grid-template-columns: 180px 120px;
+    grid-template-rows: 30px;
+    align-items: end;
+    width: 400px;
+    margin-top: 50px;
+    margin-left: 70px;
+}
+
+.total-shopping-cart-container {
     background-color: #fff;
     display: grid;
     margin-left: 180px;
-    width: 350px;
+    width: 450px;
+}
+
+.right-side-text-payment {
+    justify-self: end;
+    font-size: 24px;
 }
 
 .buy-now-button {
     font-size: 23px;
     padding: 18px;
-    margin: 50px;
     border: 2px solid #f7f7f7;
-    justify-self: start;
+    cursor: pointer;
+}
+
+.container-button {
+    margin-top: 60px;
+    margin-left: 129px;
+    margin-bottom: 60px;
 }
 
 .middle-text-payment {
-    font-size: 20px;
+    font-size: 24px;
 }
 
 .total {
-    border-top: 1px solid #f7f7f7;
-    padding: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.total-amount {
+    font-weight: bold;
 }
 
 .payment-h3 {
     font-size: 28px;
 }
 
-/* coming soon  */
+/* coming soon --------------------------------  */
 .coming-soon-container {
     display: grid;
     justify-self: center;

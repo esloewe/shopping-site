@@ -30,18 +30,18 @@ export default class Header extends React.Component {
                         <Link
                             to="/"
                             onClick={this.handleSubmit}
-                            className="menu-icon register-header"
+                            className="menu-icon register"
                         >
                             Register
                         </Link>
 
-                        <li className="menu-icon">
+                        <li className="menu-icon icons">
                             <i className="material-icons md-36">
                                 person_outline
                             </i>
                         </li>
 
-                        <Link to="/shopping-cart" className="menu-icon">
+                        <Link to="/shopping-cart" className="menu-icon icons">
                             <i className="material-icons shopping-cart md-36">
                                 add_shopping_cart
                             </i>

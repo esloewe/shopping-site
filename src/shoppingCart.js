@@ -29,13 +29,18 @@ class ShoppingCart extends React.Component {
                     item && (
                         <div className="shopping-cart-container" key={i}>
                             <div className="shopping-cart-item-container">
-                                <img
-                                    className="shopping-cart-image"
-                                    src={item.product_image_name}
-                                />
-                                <h3 id="name-cart-single">
-                                    {item.product_name}
-                                </h3>
+                                <div className="image-container-cart">
+                                    <img
+                                        className="shopping-cart-image"
+                                        src={item.product_image_name}
+                                    />
+                                </div>
+                                <div className="name-container-cart">
+                                    <h3 id="name-cart-single">
+                                        {item.product_name}
+                                    </h3>
+                                </div>
+
                                 <span id="single-cart-price">
                                     € {item.price}
                                 </span>
@@ -67,28 +72,32 @@ class ShoppingCart extends React.Component {
         return (
             <div className="renderer-container-shopping-cart">
                 <div>{this.renderAddProductToCart()}</div>
-                <div className="total-shopping-cart">
-                    <h2 className="header-title-shopping-cart">
-                        Shopping Cart
-                    </h2>
-                    <h3 className="middle-text-payment payment-h3">Payment</h3>
-                    <div>
-                        <p className="middle-text-payment">Sub-total </p>
-                        <p>€ {total}</p>
-                    </div>
-                    <p className="middle-text-payment">
-                        Delivery <b>FREE FOREVER</b>
-                    </p>
-                    <h3 className="middle-text-payment total">
-                        <b>Total (VAT included) € {total} </b>
-                    </h3>
-                    <div />
+                <div className="total-shopping-cart-container">
+                    <h2 className="header-title-shopping-cart">Total</h2>
 
-                    <Link to="purchase">
-                        <button className="buy-now-button">
-                            Go to Checkout
-                        </button>
-                    </Link>
+                    <div className="sub-total">
+                        <div className="middle-text-payment">Sub-total </div>
+                        <div className="right-side-text-payment">€ {total}</div>
+                    </div>
+                    <div className="sub-total">
+                        <div className="middle-text-payment">Delivery</div>
+                        <div className="right-side-text-payment">FREE</div>
+                    </div>
+                    <div className="final-total">
+                        <div className="middle-text-payment total">Total</div>{" "}
+                        <div className="right-side-text-payment total-amount">
+                            {" "}
+                            € {total}
+                        </div>
+                    </div>
+                    <div />
+                    <div className="container-button">
+                        <Link to="purchase">
+                            <button className="buy-now-button">
+                                Go to Checkout
+                            </button>
+                        </Link>
+                    </div>
                 </div>
             </div>
         );
