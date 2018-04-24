@@ -350,3 +350,22 @@ input[type="number"]::-webkit-outer-spin-button {
     font-size: 100px;
     justify-self: center;
 }
+
+/* admin --------------------------------  */
+.admin-links {
+    font-size: 36px;
+    padding: 14px;
+    border: 2px solid black;
+    border-radius: 15px;
+    text-align: center;
+    margin: 30px;
+}
+
+.admin-links-container {
+    margin: 100px 100px 30px 100px;
+}
+
+.admin-container {
+    margin-top: 40px;
+    text-align: center;
+}

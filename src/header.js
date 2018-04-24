@@ -12,7 +12,6 @@ export default class Header extends React.Component {
         e.preventDefault;
     }
 
-    h;
     render() {
         return (
             <div className="menu-container">

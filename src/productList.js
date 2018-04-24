@@ -38,8 +38,9 @@ class ProductList extends React.Component {
                                 src={prod.product_image_name}
                             />
                         </Link>
-
-                        <h3 id="product-name-list">{prod.product_name}</h3>
+                        <Link to="/product">
+                            <h3 id="product-name-list">{prod.product_name}</h3>
+                        </Link>
                     </div>
                 </div>
             );

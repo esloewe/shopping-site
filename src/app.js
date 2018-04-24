@@ -6,6 +6,9 @@ import ProductModal from "./productModal";
 import Graphic from "./graphic";
 import ShoppingCart from "./shoppingCart";
 import CommingSoon from "./comingSoon";
+import AdminPanel from "./adminPanel";
+import AdminProductUpload from "./adminProductUpload";
+import AdminCatalogue from "./adminCatalogue";
 
 export default class App extends React.Component {
     constructor() {
@@ -22,11 +25,19 @@ export default class App extends React.Component {
                     <Switch>
                         <Route exact path="/" component={Graphic} />
                         <Route exact path="/products" component={ProductList} />
+                        <Route path="/product" component={ProductModal} />
+                        <Route path="/shopping-cart" component={ShoppingCart} />
+                        <Route path="/purchase" component={CommingSoon} />
+                        <Route path="/admin" component={AdminPanel} />
+                        <Route
+                            path="/admin-product-upload"
+                            component={AdminProductUpload}
+                        />
+                        <Route
+                            path="/admin-catalogue"
+                            component={AdminCatalogue}
+                        />
                     </Switch>
-
-                    <Route path="/product" component={ProductModal} />
-                    <Route path="/shopping-cart" component={ShoppingCart} />
-                    <Route path="/purchase" component={CommingSoon} />
                 </div>
             </BrowserRouter>
         );
