@@ -6,7 +6,8 @@ const cookieParser = require("cookie-parser");
 const cookieSession = require("cookie-session");
 const { hashPassword, checkPassword } = require("./hashPass");
 const csrf = require("csurf");
-const { productData, getProductBySku } = require("./database");
+const paypal = require("paypal-rest-sdk");
+const { productData, getProductBySku, adminAuth } = require("./database");
 
 // middleware ----------------------------------------------------------------//
 app.use(express.static("./public"));
@@ -23,6 +24,14 @@ app.use(csrf());
 app.use(function(req, res, next) {
     res.cookie("mytoken", req.csrfToken());
     next();
+});
+
+paypal.configure({
+    mode: "sandbox", //sandbox or live
+    client_id:
+        "Aesg4cJL6yKPXjrXrT_vS-tWqOM8LL1awyD2PvZ7DyxxyqijlC6a0R6bc8S3wo83PjnGnam0-JaeLSqS",
+    client_secret:
+        "EAzrzXUmEq1L_DMRnmOnytSqNAED_VCLpGDask54dH2UUJyG3sq3-mpIrDlZkp0wSmCBoRA6AFg9IDga"
 });
 
 if (process.env.NODE_ENV != "production") {
@@ -56,6 +65,98 @@ app.get("/product/:sku", (req, res) => {
 });
 
 // post requests ---------------------------------------------------------------//
+
+app.post("/admin-auth", (req, res) => {
+    res.json({
+        res: true
+    });
+});
+
+app.post("/purchase", (req, res) => {
+    const create_payment_json = {
+        intent: "sale",
+        payer: {
+            payment_method: "paypal"
+        },
+        redirect_urls: {
+            return_url: "http://localhost:8080/success",
+            cancel_url: "http://localhost:8080/cancel"
+        },
+        transactions: [
+            {
+                item_list: {
+                    items: [
+                        {
+                            name: "item",
+                            sku: "001",
+                            price: "25.00",
+                            currency: "EUR",
+                            quantity: 1
+                        }
+                    ]
+                },
+                amount: {
+                    currency: "EUR",
+                    total: "25.00"
+                },
+                description: "This is the payment description."
+            }
+        ]
+    };
+
+    paypal.payment.create(create_payment_json, function(error, payment) {
+        if (error) {
+            throw error;
+        } else {
+            console.log("Create Payment Response");
+            console.log(payment);
+            res.send("testing paypal payment");
+
+            for (let i = 0; i < payment.links.length; i++) {
+                if (payment.links[i].rel === "approval_url") {
+                    res.redirect(payment.links[i].href);
+                }
+            }
+        }
+    });
+});
+
+app.get("/success", (req, res) => {
+    const payerId = req.query.PayerID;
+    const paymentId = req.query.paymentId;
+
+    const execute_payment_json = {
+        payerId: "append to redirect url",
+        transactions: [
+            {
+                amount: {
+                    currency: "EUR",
+                    total: "25.00"
+                }
+            }
+        ]
+    };
+
+    paypal.payment.execute(paymentId, execute_payment_json, function(
+        error,
+        payment
+    ) {
+        if (error) {
+            console.log(error.response);
+            throw error;
+        } else {
+            console.log("Get Payment Response");
+            console.log(JSON.stringify(payment));
+            res.send("success");
+        }
+    });
+});
+
+app.get("/cancel", (req, res) => {
+    res.send("cancel");
+});
+
+// ---------------------------------------------------------------//
 
 app.get("*", function(req, res) {
     res.sendFile(__dirname + "/index.html");

@@ -351,6 +351,15 @@ input[type="number"]::-webkit-outer-spin-button {
     justify-self: center;
 }
 
+#button-paypal {
+    justify-self: center;
+}
+
+#button-paypal button {
+    font-size: 36px;
+    margin: 50px;
+}
+
 /* admin --------------------------------  */
 .admin-links {
     font-size: 36px;

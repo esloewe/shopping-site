@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS products;
+-- DROP TABLE IF EXISTS products;
 
 CREATE TABLE products (
     id SERIAL PRIMARY KEY,

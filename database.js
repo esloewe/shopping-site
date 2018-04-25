@@ -36,3 +36,19 @@ exports.getProductBySku = function(sku) {
             console.log(error);
         });
 };
+
+exports.adminAuth = function(username) {
+    return db
+        .query(
+            `SELECT password_hash
+                    FROM users_data
+                    WHERE email = $1`,
+            [username]
+        )
+        .then(results => {
+            return results.rows[0].password_hash;
+        })
+        .catch(error => {
+            console.log(error);
+        });
+};
