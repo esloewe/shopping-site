@@ -52,9 +52,11 @@ export default function reducer(state = initialState || {}, action) {
     }
 
     if (action.type == "REMOVE_ITEM_FROM_CART") {
+        console.log("remove from cart stuff", action.sku);
         state = {
             ...state,
             cart: state.cart.filter(item => {
+                console.log("item in remove from cart", item);
                 return item.sku != action.sku;
             })
         };

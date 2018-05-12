@@ -378,3 +378,48 @@ input[type="number"]::-webkit-outer-spin-button {
     margin-top: 40px;
     text-align: center;
 }
+
+/* checkout --------------------------------  */
+
+.checkout {
+    display: grid;
+    grid-template-columns: 30% 45%;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+checkout-form-h2 {
+    padding: 50px;
+}
+
+.checkout-form input {
+    font-size: 16px;
+    border: 2px solid transparent;
+    padding: 5px;
+    margin: 5px;
+}
+.checkout-form-address {
+    margin-top: 60px;
+}
+
+.checkout-form-address-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.small-input {
+    width: 230px;
+}
+
+.medium-input {
+    width: 280px;
+}
+
+.longer-input {
+    width: 370px;
+}
+
+.proceed-payment {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}

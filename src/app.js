@@ -9,6 +9,7 @@ import CommingSoon from "./comingSoon";
 import AdminPanel from "./adminPanel";
 import AdminProductUpload from "./adminProductUpload";
 import AdminCatalogue from "./adminCatalogue";
+import Checkout from "./checkout";
 
 export default class App extends React.Component {
     constructor() {
@@ -27,6 +28,7 @@ export default class App extends React.Component {
                         <Route exact path="/products" component={ProductList} />
                         <Route path="/product" component={ProductModal} />
                         <Route path="/shopping-cart" component={ShoppingCart} />
+                        <Route path="/checkout" component={Checkout} />
                         <Route path="/purchase" component={CommingSoon} />
                         <Route path="/admin" component={AdminPanel} />
                         <Route

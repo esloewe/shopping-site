@@ -33,6 +33,7 @@ class ShoppingCart extends React.Component {
                                     <img
                                         className="shopping-cart-image"
                                         src={item.product_image_name}
+                                        alt=""
                                     />
                                 </div>
                                 <div className="name-container-cart">
@@ -92,7 +93,7 @@ class ShoppingCart extends React.Component {
                     </div>
                     <div />
                     <div className="container-button">
-                        <Link to="purchase">
+                        <Link to="/checkout">
                             <button className="buy-now-button">
                                 Go to Checkout
                             </button>
