@@ -74,7 +74,7 @@ export default class Checkout extends React.Component {
                             />
 
                             <div className="proceed-payment">
-                                <button className="buy-now-button">
+                                <button className="checkout-button go-to-summary">
                                     Proceed to Summary
                                 </button>
                             </div>

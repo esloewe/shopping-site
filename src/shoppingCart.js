@@ -82,7 +82,7 @@ class ShoppingCart extends React.Component {
                     </div>
                     <div className="sub-total">
                         <div className="middle-text-payment">Delivery</div>
-                        <div className="right-side-text-payment">FREE</div>
+                        <div className="right-side-text-payment">free</div>
                     </div>
                     <div className="final-total">
                         <div className="middle-text-payment total">Total</div>{" "}
@@ -94,7 +94,7 @@ class ShoppingCart extends React.Component {
                     <div />
                     <div className="container-button">
                         <Link to="/checkout">
-                            <button className="buy-now-button">
+                            <button className="checkout-button">
                                 Go to Checkout
                             </button>
                         </Link>

@@ -40,6 +40,7 @@ class ProductList extends React.Component {
                         </Link>
                         <Link to="/product">
                             <h3 id="product-name-list">{prod.product_name}</h3>
+                            <span className="price-list">EUR {prod.price}</span>
                         </Link>
                     </div>
                 </div>
