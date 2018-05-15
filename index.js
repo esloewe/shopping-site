@@ -7,7 +7,11 @@ const cookieSession = require("cookie-session");
 const { hashPassword, checkPassword } = require("./hashPass");
 const csrf = require("csurf");
 const paypal = require("paypal-rest-sdk");
-const { productData, getProductBySku, adminAuth } = require("./database");
+const {
+    productData,
+    getProductBySku,
+    getUserCartDetails
+} = require("./database");
 
 // middleware ----------------------------------------------------------------//
 app.use(express.static("./public"));
@@ -62,6 +66,32 @@ app.get("/product/:sku", (req, res) => {
             product: results
         });
     });
+});
+
+app.post("/checkout", (req, res) => {
+    console.log("req body checkout ", req.boby);
+    if (!req.body) {
+        res.json({
+            success: false,
+            error: "please provide all the info needed"
+        });
+    } else {
+        getUserCartDetails(
+            req.body.first_name,
+            req.body.last_name,
+            req.body.address_1,
+            req.body.address_2,
+            req.body.postal_code,
+            req.body.city,
+            req.body.email,
+            req.body.country,
+            req.body.telephone,
+            req.body.state,
+            req.body.order_status
+        ).then(() => {
+            res.json({ success: true });
+        });
+    }
 });
 
 // post requests ---------------------------------------------------------------//
