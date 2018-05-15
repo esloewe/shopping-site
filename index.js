@@ -79,15 +79,15 @@ app.post("/checkout", (req, res) => {
         getUserCartDetails(
             req.body.first_name,
             req.body.last_name,
+            req.body.email,
+            req.body.telephone,
             req.body.address_1,
             req.body.house_number_address,
             req.body.address_2,
             req.body.postal_code,
             req.body.city,
-            req.body.email,
-            req.body.country,
-            req.body.telephone,
             req.body.state,
+            req.body.country,
             req.body.order_status
         ).then(() => {
             res.json({ success: true });

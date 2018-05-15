@@ -8,6 +8,7 @@ export default class Checkout extends React.Component {
             first_name: "",
             last_name: "",
             email: "",
+            telephone: "",
             address_1: "",
             house_number_address: "",
             address_2: "",
@@ -15,7 +16,6 @@ export default class Checkout extends React.Component {
             city: "",
             state: "",
             country: "",
-            telephone: "",
             order_status: 1
         };
         this.handleChange = this.handleChange.bind(this);
@@ -36,14 +36,14 @@ export default class Checkout extends React.Component {
                 first_name: resp.data.first_name,
                 last_name: resp.data.last_name,
                 email: resp.data.email,
+                telephone: resp.data.telephone,
                 address_1: resp.data.address_1,
                 house_number_address: resp.data.house_number_address,
                 address_2: resp.data.address_2,
                 postal_code: resp.data.postal_code,
                 city: resp.data.city,
                 state: resp.data.state,
-                country: resp.data.country,
-                telephone: resp.data.telephone
+                country: resp.data.country
             });
         });
     }
