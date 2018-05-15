@@ -1,5 +1,7 @@
 # shopping-site
 
+
+**(Personal Project)**
 This is a shopping site which sells 3d printed jewelry. The technologies used to build this site were: **_node.js, react.js, redux, three.js and postgresSQL_**
 
 
