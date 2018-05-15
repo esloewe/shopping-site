@@ -2,9 +2,9 @@ DROP TABLE IF EXISTS orders;
 
 CREATE TABLE orders (
     id SERIAL PRIMARY KEY,
-    first_name VARCHAR (200) NOT NULL,
-    last_name VARCHAR (200) NOT NULL,
-    email VARCHAR (200) NOT NULL,
+    first_name VARCHAR (200),
+    last_name VARCHAR (200),
+    email VARCHAR (200),
     telephone VARCHAR (200),
     address_1 VARCHAR (200),
     address_2 VARCHAR (200),

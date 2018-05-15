@@ -59,6 +59,7 @@ exports.getUserCartDetails = function(
     email,
     telephone,
     address_1,
+    house_number_address,
     address_2,
     postal_code,
     city,
@@ -69,14 +70,15 @@ exports.getUserCartDetails = function(
     return db
         .query(
             `INSERT INTO orders (first_name, last_name, email, telephone,
-        address_1, address_2, postal_code, city, state, country, order_status)
-        VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING id`,
+        address_1, house_number_address, address_2, postal_code, city, state, country, order_status)
+        VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING id`,
             [
                 first_name,
                 last_name,
                 email,
                 telephone,
                 address_1,
+                house_number_address,
                 address_2,
                 postal_code,
                 city,

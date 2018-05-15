@@ -69,7 +69,7 @@ app.get("/product/:sku", (req, res) => {
 });
 
 app.post("/checkout", (req, res) => {
-    console.log("req body checkout ", req.boby);
+    console.log("req body checkout ", req.body);
     if (!req.body) {
         res.json({
             success: false,
@@ -80,6 +80,7 @@ app.post("/checkout", (req, res) => {
             req.body.first_name,
             req.body.last_name,
             req.body.address_1,
+            req.body.house_number_address,
             req.body.address_2,
             req.body.postal_code,
             req.body.city,

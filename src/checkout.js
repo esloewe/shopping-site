@@ -9,6 +9,7 @@ export default class Checkout extends React.Component {
             last_name: "",
             email: "",
             address_1: "",
+            house_number_address: "",
             address_2: "",
             postal_code: "",
             city: "",
@@ -31,7 +32,19 @@ export default class Checkout extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         axios.post("/checkout", this.state).then(resp => {
-            console.log("resp", resp);
+            this.setState({
+                first_name: resp.data.first_name,
+                last_name: resp.data.last_name,
+                email: resp.data.email,
+                address_1: resp.data.address_1,
+                house_number_address: resp.data.house_number_address,
+                address_2: resp.data.address_2,
+                postal_code: resp.data.postal_code,
+                city: resp.data.city,
+                state: resp.data.state,
+                country: resp.data.country,
+                telephone: resp.data.telephone
+            });
         });
     }
     render() {
@@ -44,14 +57,14 @@ export default class Checkout extends React.Component {
                         <input
                             onChange={this.handleChange}
                             className="medium-input"
-                            name="firstname"
+                            name="first_name"
                             type="text"
                         />
                         <p>Last Name: </p>
                         <input
                             onChange={this.handleChange}
                             className="medium-input"
-                            name="last-name"
+                            name="last_name"
                             type="text"
                         />
                         <p>Email: </p>
@@ -75,14 +88,21 @@ export default class Checkout extends React.Component {
                         <input
                             onChange={this.handleChange}
                             className="longer-input"
-                            name="address-1"
+                            name="address_1"
+                            type="text"
+                        />
+                        <p>House Number: </p>
+                        <input
+                            onChange={this.handleChange}
+                            className="very-small-input"
+                            name="house_number_address"
                             type="text"
                         />
                         <p>Address Line 2: </p>
                         <input
                             onChange={this.handleChange}
                             className="longer-input"
-                            name="address-2"
+                            name="address_2"
                             type="text"
                         />
                         <div className="checkout-form checkout-form-address-2">
@@ -91,7 +111,7 @@ export default class Checkout extends React.Component {
                                 <input
                                     onChange={this.handleChange}
                                     className="small-input"
-                                    name="postal-code"
+                                    name="postal_code"
                                     type="text"
                                 />
                                 <p>City: </p>
