@@ -10,6 +10,13 @@ export default function reducer(state = initialState || {}, action) {
             productList: action.productList
         };
     }
+    if (action.type == "GET_CHECKOUT") {
+        console.log("action.getCheckout", action.getCheckout);
+        state = {
+            ...state,
+            getCheckout: action.getCheckout
+        };
+    }
 
     if (action.type == "PRODUCT") {
         state = {
@@ -19,50 +26,62 @@ export default function reducer(state = initialState || {}, action) {
     }
 
     if (action.type == "ADD_PRODUCT_TO_CART") {
-        let productCombined = false;
-        let cart = state.cart;
-        if (!cart) {
-            cart = [];
-        }
-        for (var i = 0; i < cart.length; i++) {
-            if (action.product.sku == cart[i].sku) {
-                let newQuantity = parseInt(cart[i].quantity);
-                newQuantity += parseInt(action.quantity);
-                cart[i].quantity = newQuantity;
-                productCombined = true;
-            }
-        }
-        console.log("checking the cart in reducer", cart, action.product);
-
-        if (productCombined) {
-            state = {
-                ...state,
-                cart: [...cart]
-            };
-        } else {
-            const newProduct = {
-                ...action.product,
-                quantity: action.quantity
-            };
-            state = {
-                ...state,
-                cart: [...cart, newProduct]
-            };
-        }
+        state = {
+            ...state,
+            checkout: state.getCheckout
+        };
     }
 
     if (action.type == "REMOVE_ITEM_FROM_CART") {
-        console.log("remove from cart stuff", action.sku);
         state = {
             ...state,
             cart: state.cart.filter(item => {
-                console.log("item in remove from cart", item);
-                return item.sku != action.sku;
+                return item.id != action.id;
             })
         };
     }
+
+    // if (action.type == "CHECKOUT") {
+    //     console.log("checkout final ", action.cart);
+    //     state = {
+    //         ...state,
+    //         cart: action.cart
+    //     };
+    // }
 
     localStorage.setItem("state", JSON.stringify(state));
 
     return state;
 }
+
+//
+// let productCombined = false;
+// let cart = state.getCheckout;
+// console.log("state.getCheckout", state.cart);
+// if (!cart) {
+//     cart = [];
+// }
+// for (var i = 0; i < cart.length; i++) {
+//     if (action.product.id == cart[i].id) {
+//         let newQuantity = parseInt(cart[i].quantity);
+//         newQuantity += parseInt(action.quantity);
+//         cart[i].quantity = newQuantity;
+//         productCombined = true;
+//     }
+// }
+//
+// if (productCombined) {
+//     state = {
+//         ...state,
+//         cart: [...cart]
+//     };
+// } else {
+//     const newProduct = {
+//         ...action.product,
+//         quantity: action.quantity
+//     };
+//     state = {
+//         ...state,
+//         cart: [...cart, newProduct]
+//     };
+// }

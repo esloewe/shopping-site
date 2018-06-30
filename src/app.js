@@ -1,14 +1,14 @@
 import React from "react";
 import { Link, BrowserRouter, Route, Switch } from "react-router-dom";
-import Header from "./header";
+import { Header } from "./header";
 import ProductList from "./productList";
 import ProductModal from "./productModal";
 import Graphic from "./graphic";
 import ShoppingCart from "./shoppingCart";
 import CommingSoon from "./comingSoon";
-import AdminPanel from "./adminPanel";
-import AdminProductUpload from "./adminProductUpload";
-import AdminCatalogue from "./adminCatalogue";
+import AdminPanel from "./admin/adminPanel";
+import AdminProductUpload from "./admin/adminProductUpload";
+import AdminCatalogue from "./admin/adminCatalogue";
 import Checkout from "./checkout";
 
 export default class App extends React.Component {

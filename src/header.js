@@ -1,15 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { checkout } from "./actions";
 
-export default class Header extends React.Component {
+export class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
+        this.handleClick = this.handleClick.bind(this);
     }
 
-    handleSubmit(e) {
-        console.log("clickin");
-        e.preventDefault;
+    handleClick(e) {
+        e.preventDefault();
     }
 
     render() {
@@ -26,22 +28,11 @@ export default class Header extends React.Component {
                 </ul>
                 <div className="menu-icons">
                     <ul className="menu-icons ">
-                        <Link
-                            to="/"
-                            onClick={this.handleSubmit}
-                            className="menu-icon register"
-                        >
-                            Register
-                        </Link>
-
-                        <li className="menu-icon icons">
-                            <i className="material-icons md-36">
-                                person_outline
-                            </i>
-                        </li>
-
                         <Link to="/shopping-cart" className="menu-icon icons">
-                            <i className="material-icons shopping-cart md-36">
+                            <i
+                                className="material-icons shopping-cart md-36"
+                                onClick={this.handleClick}
+                            >
                                 add_shopping_cart
                             </i>
                         </Link>
@@ -51,3 +42,11 @@ export default class Header extends React.Component {
         );
     }
 }
+
+function mapStateToProps(state) {
+    console.log("state checkout get header", state.getCheckout);
+    return {
+        getCheckout: state.getCheckout
+    };
+}
+export default connect(mapStateToProps)(Header);

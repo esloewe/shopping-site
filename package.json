@@ -12,6 +12,7 @@
         "node": "8.9.4"
     },
     "dependencies": {
+        "@shopify/polaris": "^2.2.0",
         "axios": "^0.15.3",
         "babel-cli": "^6.18.0",
         "babel-core": "^6.20.0",
@@ -44,6 +45,7 @@
         "redux": "^3.7.1",
         "redux-devtools-extension": "^2.13.2",
         "redux-promise": "^0.5.3",
+        "shopify-buy": "^1.6.0",
         "socket-cookie-session": "github:spicedacademy/socket-cookie-session",
         "socket.io": "^2.0.3",
         "spiced-pg": "spicedacademy/spiced-pg",

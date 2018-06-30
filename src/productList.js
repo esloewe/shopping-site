@@ -3,7 +3,7 @@ import axios from "./axios";
 import { createStore, applyMiddleware } from "redux";
 import reduxPromise from "redux-promise";
 import { connect } from "react-redux";
-import { productList, product } from "./actions";
+import { productList, product, getCheckout } from "./actions";
 import { ProductModal } from "./productModal";
 import { Link } from "react-router-dom";
 
@@ -31,16 +31,19 @@ class ProductList extends React.Component {
                     <div className="product-list-item">
                         <Link to="/product">
                             <img
-                                onClick={() =>
-                                    this.props.dispatch(product(prod))
-                                }
+                                onClick={() => {
+                                    this.props.dispatch(product(prod));
+                                    this.props.dispatch(getCheckout());
+                                }}
                                 id="product-image-list"
-                                src={prod.product_image_name}
+                                src={prod.images[0].src}
                             />
                         </Link>
                         <Link to="/product">
-                            <h3 id="product-name-list">{prod.product_name}</h3>
-                            <span className="price-list">EUR {prod.price}</span>
+                            <h3 id="product-name-list">{prod.title}</h3>
+                            <span className="price-list">
+                                EUR {prod.variants[0].price}
+                            </span>
                         </Link>
                     </div>
                 </div>
@@ -61,15 +64,9 @@ class ProductList extends React.Component {
 }
 
 function mapStateToProps(state) {
-    console.log("in map state to props", state.product);
-
     return {
         productList: state.productList,
         product: state.product
     };
 }
 export default connect(mapStateToProps)(ProductList);
-// onClick={() =>
-//     this.props.dispatch(product(prod))
-// }
-//

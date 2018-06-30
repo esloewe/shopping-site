@@ -2,7 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 import CommingSoon from "./comingSoon";
 import { Link } from "react-router-dom";
-import { addProductToCart, removeProductFromCart } from "./actions";
+import {
+    addProductToCart,
+    removeProductFromCart,
+    checkout,
+    getCheckout
+} from "./actions";
 
 class ShoppingCart extends React.Component {
     constructor(props) {
@@ -11,20 +16,26 @@ class ShoppingCart extends React.Component {
 
         this.renderAddProductToCart = this.renderAddProductToCart.bind(this);
         this.handleRemoveItem = this.handleRemoveItem.bind(this);
-        this.checkingForDuplicates = this.checkingForDuplicates.bind(this);
     }
 
-    handleRemoveItem(sku) {
-        this.props.dispatch(removeProductFromCart(sku));
+    componentDidMount() {
+        let checkoutId = localStorage.getItem(
+            "checkoutId",
+            this.props.getCheckout
+        );
+        console.log("checkout id header", checkoutId);
+        this.props.dispatch(checkout(checkoutId));
     }
 
-    checkingForDuplicates() {}
+    handleRemoveItem(lineitemId) {
+        this.props.dispatch(removeProductFromCart(lineitemId));
+    }
 
     renderAddProductToCart() {
-        if (!this.props.cartItems) {
+        if (!this.props.cart) {
             return null;
         } else {
-            return this.props.cartItems.map((item, i) => {
+            return this.props.cart.map((item, i) => {
                 return (
                     item && (
                         <div className="shopping-cart-container" key={i}>
@@ -32,25 +43,25 @@ class ShoppingCart extends React.Component {
                                 <div className="image-container-cart">
                                     <img
                                         className="shopping-cart-image"
-                                        src={item.product_image_name}
+                                        src={item.variant.images.src}
                                         alt=""
                                     />
                                 </div>
                                 <div className="name-container-cart">
                                     <h3 id="name-cart-single">
-                                        {item.product_name}
+                                        {item.lineitems[0].title}
                                     </h3>
                                 </div>
 
                                 <span id="single-cart-price">
-                                    € {item.price}
+                                    € {item.variant.price}
                                 </span>
                                 <span id="single-cart-qty">
-                                    Qty: {item.quantity}
+                                    Qty: {item.lineitems[0].quantity}
                                 </span>
                                 <button
                                     onClick={() =>
-                                        this.handleRemoveItem(item.sku)
+                                        this.handleRemoveItem(item.variant.id)
                                     }
                                     className="shopping-cart-button-remove"
                                 >
@@ -65,10 +76,10 @@ class ShoppingCart extends React.Component {
     }
 
     render() {
-        let total = 0;
-        this.props.cartItems.forEach(item => {
-            total += parseInt(item.price * item.quantity);
-        });
+        // let total = 0;
+        // this.props.cartItems.forEach(item => {
+        //     total += parseInt(item.variants[0].price * item.quantity);
+        // });
 
         return (
             <div className="renderer-container-shopping-cart">
@@ -78,7 +89,7 @@ class ShoppingCart extends React.Component {
 
                     <div className="sub-total">
                         <div className="middle-text-payment">Sub-total </div>
-                        <div className="right-side-text-payment">€ {total}</div>
+                        <div className="right-side-text-payment">€ total</div>
                     </div>
                     <div className="sub-total">
                         <div className="middle-text-payment">Delivery</div>
@@ -88,16 +99,14 @@ class ShoppingCart extends React.Component {
                         <div className="middle-text-payment total">Total</div>{" "}
                         <div className="right-side-text-payment total-amount">
                             {" "}
-                            € {total}
+                            € total
                         </div>
                     </div>
                     <div />
                     <div className="container-button">
-                        <Link to="/checkout">
-                            <button className="checkout-button">
-                                Go to Checkout
-                            </button>
-                        </Link>
+                        <button className="checkout-button">
+                            Go to Checkout
+                        </button>
                     </div>
                 </div>
             </div>
@@ -106,10 +115,10 @@ class ShoppingCart extends React.Component {
 }
 
 function mapStateToProps(state) {
-    console.log("state cart in shpiingcart ", state.cart);
-
+    console.log("getCheckout in shopping cart", state.getCheckout);
     return {
-        cartItems: state.cart
+        cart: state.cart,
+        getCheckout: state.getCheckout
     };
 }
 export default connect(mapStateToProps)(ShoppingCart);
